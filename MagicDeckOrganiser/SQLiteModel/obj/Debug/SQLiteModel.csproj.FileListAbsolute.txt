@@ -1,0 +1,14 @@
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\SQLiteModel.dll.config
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\SQLiteModel.dll
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\SQLiteModel.pdb
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\EntityFramework.dll
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\System.Data.SQLite.dll
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\System.Data.SQLite.EF6.dll
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\System.Data.SQLite.Linq.dll
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\EntityFramework.xml
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\bin\Debug\System.Data.SQLite.xml
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\obj\Debug\SQLiteModel.csprojResolveAssemblyReference.cache
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\obj\Debug\SQLiteModel.dll
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\obj\Debug\SQLiteModel.pdb

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81c245a24acb43bd82bd6c897b667605" Name="Diagram1">
+        <EntityTypeShape EntityType="MagicModelContext.AbilityTypes" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.CardAbilities" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.Cards" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.Cards_CardsAbilities" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.CardsHasFeatures" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.CardsToSell" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.CardTypes" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.DeckHasCards" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.Decks" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.FavouriteCards" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.FavouriteDecks" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.Features" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.HelpContent" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.ManaCost" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.ManaType" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.ProvidedMana" Width="1.5" PointX="8.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.Rules" Width="1.5" PointX="8.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.SubTypes" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicModelContext.Versions" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <AssociationConnector Association="MagicModelContext.FK_CardAbilities_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_Cards_CardsAbilities_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_ManaCost_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_Cards_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_Cards_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_Cards_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_Cards_3_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_Cards_4_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_Cards_CardsAbilities_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_CardsHasFeatures_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_CardsToSell_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_DeckHasCards_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_FavouriteCards_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_ManaCost_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_ProvidedMana_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_CardsHasFeatures_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_DeckHasCards_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_FavouriteDecks_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_ManaCost_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicModelContext.FK_ProvidedMana_1_0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

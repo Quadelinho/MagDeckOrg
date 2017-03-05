@@ -1,0 +1,1302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MagicModelContext.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\SQLiteModel\SQLiteDatabase_Magic.sqlite&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AbilityTypes">
+          <Key>
+            <PropertyRef Name="AbilityTypeID" />
+          </Key>
+          <Property Name="AbilityTypeID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="GeneralDescription" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="CardAbilities">
+          <Key>
+            <PropertyRef Name="CardAbilitiesID" />
+          </Key>
+          <Property Name="CardAbilitiesID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="45" />
+          <Property Name="IsPassive" Type="bit" Nullable="false" />
+          <Property Name="Cost" Type="integer" />
+          <Property Name="AdditionalCondition" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="AbilityType" Type="integer" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Type" Type="integer" Nullable="false" />
+          <Property Name="Version" Type="integer" Nullable="false" />
+          <Property Name="ColorAssignment" Type="integer" Nullable="false" />
+          <Property Name="Hyperlink" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="TotalManaCost" Type="integer" Nullable="false" />
+          <Property Name="AttackPower" Type="integer" />
+          <Property Name="Health" Type="integer" />
+          <Property Name="SecondSideCardID" Type="integer" />
+          <Property Name="FableDescription" Type="varchar" MaxLength="100" />
+          <Property Name="Footer" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Rarity" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ReleaseYear" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="OrderNumberInExpansion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="WantToBuy" Type="bit" />
+          <Property Name="SubTypeID" Type="integer" />
+        </EntityType>
+        <EntityType Name="Cards_CardsAbilities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardID" Type="integer" Nullable="false" />
+          <Property Name="AbilityID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardsHasFeatures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardID" Type="integer" Nullable="false" />
+          <Property Name="FeatueID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardsToSell">
+          <Key>
+            <PropertyRef Name="CardsToSellID" />
+          </Key>
+          <Property Name="CardsToSellID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardID" Type="integer" Nullable="false" />
+          <Property Name="NumberToSell" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardTypes">
+          <Key>
+            <PropertyRef Name="CardTypeID" />
+          </Key>
+          <Property Name="CardTypeID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeckHasCards">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardID" Type="integer" Nullable="false" />
+          <Property Name="DeckID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Decks">
+          <Key>
+            <PropertyRef Name="DeckID" />
+          </Key>
+          <Property Name="DeckID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavouriteCards">
+          <Key>
+            <PropertyRef Name="FavouriteCardID" />
+          </Key>
+          <Property Name="FavouriteCardID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardID" Type="integer" />
+        </EntityType>
+        <EntityType Name="FavouriteDecks">
+          <Key>
+            <PropertyRef Name="FavouriteDeckID" />
+          </Key>
+          <Property Name="FavouriteDeckID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeckID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Features">
+          <Key>
+            <PropertyRef Name="FeatureID" />
+          </Key>
+          <Property Name="FeatureID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="HelpContent">
+          <Key>
+            <PropertyRef Name="HelpContentID" />
+          </Key>
+          <Property Name="HelpContentID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManaCost">
+          <Key>
+            <PropertyRef Name="ManaCostID" />
+          </Key>
+          <Property Name="ManaCostID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="ManaID" Type="integer" Nullable="false" />
+          <Property Name="CardID" Type="integer" />
+          <Property Name="AbilityID" Type="integer" />
+        </EntityType>
+        <EntityType Name="ManaType">
+          <Key>
+            <PropertyRef Name="ManaID" />
+          </Key>
+          <Property Name="ManaID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Symbol" Type="blob" />
+        </EntityType>
+        <EntityType Name="ProvidedMana">
+          <Key>
+            <PropertyRef Name="ProvidedManaID" />
+          </Key>
+          <Property Name="ProvidedManaID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="integer" Nullable="false" />
+          <Property Name="AdditionalNotes" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ManaID" Type="integer" Nullable="false" />
+          <Property Name="CardID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rules">
+          <Key>
+            <PropertyRef Name="RuleID" />
+          </Key>
+          <Property Name="RuleID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Hyperlink" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SubTypes">
+          <Key>
+            <PropertyRef Name="SubTypeID" />
+          </Key>
+          <Property Name="SubTypeID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Versions">
+          <Key>
+            <PropertyRef Name="VersionID" />
+          </Key>
+          <Property Name="VersionID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Symbol" Type="blob" />
+        </EntityType>
+        <Association Name="FK_CardAbilities_0_0">
+          <End Role="AbilityTypes" Type="Self.AbilityTypes" Multiplicity="0..1" />
+          <End Role="CardAbilities" Type="Self.CardAbilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbilityTypes">
+              <PropertyRef Name="AbilityTypeID" />
+            </Principal>
+            <Dependent Role="CardAbilities">
+              <PropertyRef Name="AbilityType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_0_0">
+          <End Role="SubTypes" Type="Self.SubTypes" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTypes">
+              <PropertyRef Name="SubTypeID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="SubTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
+          <End Role="Cards1" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="Cards1">
+              <PropertyRef Name="SecondSideCardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_2_0">
+          <End Role="ManaType" Type="Self.ManaType" Multiplicity="1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManaType">
+              <PropertyRef Name="ManaID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="ColorAssignment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_3_0">
+          <End Role="Versions" Type="Self.Versions" Multiplicity="1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Versions">
+              <PropertyRef Name="VersionID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="Version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_4_0">
+          <End Role="CardTypes" Type="Self.CardTypes" Multiplicity="1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardTypes">
+              <PropertyRef Name="CardTypeID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_CardsAbilities_0_0">
+          <End Role="CardAbilities" Type="Self.CardAbilities" Multiplicity="1" />
+          <End Role="Cards_CardsAbilities" Type="Self.Cards_CardsAbilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardAbilities">
+              <PropertyRef Name="CardAbilitiesID" />
+            </Principal>
+            <Dependent Role="Cards_CardsAbilities">
+              <PropertyRef Name="AbilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_CardsAbilities_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="Cards_CardsAbilities" Type="Self.Cards_CardsAbilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="Cards_CardsAbilities">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardsHasFeatures_0_0">
+          <End Role="Features" Type="Self.Features" Multiplicity="1" />
+          <End Role="CardsHasFeatures" Type="Self.CardsHasFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Features">
+              <PropertyRef Name="FeatureID" />
+            </Principal>
+            <Dependent Role="CardsHasFeatures">
+              <PropertyRef Name="FeatueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardsHasFeatures_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="CardsHasFeatures" Type="Self.CardsHasFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="CardsHasFeatures">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardsToSell_0_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="CardsToSell" Type="Self.CardsToSell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="CardsToSell">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeckHasCards_0_0">
+          <End Role="Decks" Type="Self.Decks" Multiplicity="1" />
+          <End Role="DeckHasCards" Type="Self.DeckHasCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Decks">
+              <PropertyRef Name="DeckID" />
+            </Principal>
+            <Dependent Role="DeckHasCards">
+              <PropertyRef Name="DeckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeckHasCards_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="DeckHasCards" Type="Self.DeckHasCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="DeckHasCards">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavouriteCards_0_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
+          <End Role="FavouriteCards" Type="Self.FavouriteCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="FavouriteCards">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavouriteDecks_0_0">
+          <End Role="Decks" Type="Self.Decks" Multiplicity="1" />
+          <End Role="FavouriteDecks" Type="Self.FavouriteDecks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Decks">
+              <PropertyRef Name="DeckID" />
+            </Principal>
+            <Dependent Role="FavouriteDecks">
+              <PropertyRef Name="DeckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManaCost_0_0">
+          <End Role="CardAbilities" Type="Self.CardAbilities" Multiplicity="0..1" />
+          <End Role="ManaCost" Type="Self.ManaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardAbilities">
+              <PropertyRef Name="CardAbilitiesID" />
+            </Principal>
+            <Dependent Role="ManaCost">
+              <PropertyRef Name="AbilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManaCost_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
+          <End Role="ManaCost" Type="Self.ManaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="ManaCost">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManaCost_2_0">
+          <End Role="ManaType" Type="Self.ManaType" Multiplicity="1" />
+          <End Role="ManaCost" Type="Self.ManaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManaType">
+              <PropertyRef Name="ManaID" />
+            </Principal>
+            <Dependent Role="ManaCost">
+              <PropertyRef Name="ManaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProvidedMana_0_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="ProvidedMana" Type="Self.ProvidedMana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="ProvidedMana">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProvidedMana_1_0">
+          <End Role="ManaType" Type="Self.ManaType" Multiplicity="1" />
+          <End Role="ProvidedMana" Type="Self.ProvidedMana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManaType">
+              <PropertyRef Name="ManaID" />
+            </Principal>
+            <Dependent Role="ProvidedMana">
+              <PropertyRef Name="ManaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MagicModelContextStoreContainer">
+          <EntitySet Name="AbilityTypes" EntityType="Self.AbilityTypes" store:Type="Tables" />
+          <EntitySet Name="CardAbilities" EntityType="Self.CardAbilities" store:Type="Tables" />
+          <EntitySet Name="Cards" EntityType="Self.Cards" store:Type="Tables" />
+          <EntitySet Name="Cards_CardsAbilities" EntityType="Self.Cards_CardsAbilities" store:Type="Tables" />
+          <EntitySet Name="CardsHasFeatures" EntityType="Self.CardsHasFeatures" store:Type="Tables" />
+          <EntitySet Name="CardsToSell" EntityType="Self.CardsToSell" store:Type="Tables" />
+          <EntitySet Name="CardTypes" EntityType="Self.CardTypes" store:Type="Tables" />
+          <EntitySet Name="DeckHasCards" EntityType="Self.DeckHasCards" store:Type="Tables" />
+          <EntitySet Name="Decks" EntityType="Self.Decks" store:Type="Tables" />
+          <EntitySet Name="FavouriteCards" EntityType="Self.FavouriteCards" store:Type="Tables" />
+          <EntitySet Name="FavouriteDecks" EntityType="Self.FavouriteDecks" store:Type="Tables" />
+          <EntitySet Name="Features" EntityType="Self.Features" store:Type="Tables" />
+          <EntitySet Name="HelpContent" EntityType="Self.HelpContent" store:Type="Tables" />
+          <EntitySet Name="ManaCost" EntityType="Self.ManaCost" store:Type="Tables" />
+          <EntitySet Name="ManaType" EntityType="Self.ManaType" store:Type="Tables" />
+          <EntitySet Name="ProvidedMana" EntityType="Self.ProvidedMana" store:Type="Tables" />
+          <EntitySet Name="Rules" EntityType="Self.Rules" store:Type="Tables" />
+          <EntitySet Name="SubTypes" EntityType="Self.SubTypes" store:Type="Tables" />
+          <EntitySet Name="Versions" EntityType="Self.Versions" store:Type="Tables" />
+          <AssociationSet Name="FK_CardAbilities_0_0" Association="Self.FK_CardAbilities_0_0">
+            <End Role="AbilityTypes" EntitySet="AbilityTypes" />
+            <End Role="CardAbilities" EntitySet="CardAbilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_0_0" Association="Self.FK_Cards_0_0">
+            <End Role="SubTypes" EntitySet="SubTypes" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_1_0" Association="Self.FK_Cards_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Cards1" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_2_0" Association="Self.FK_Cards_2_0">
+            <End Role="ManaType" EntitySet="ManaType" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_3_0" Association="Self.FK_Cards_3_0">
+            <End Role="Versions" EntitySet="Versions" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_4_0" Association="Self.FK_Cards_4_0">
+            <End Role="CardTypes" EntitySet="CardTypes" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_CardsAbilities_0_0" Association="Self.FK_Cards_CardsAbilities_0_0">
+            <End Role="CardAbilities" EntitySet="CardAbilities" />
+            <End Role="Cards_CardsAbilities" EntitySet="Cards_CardsAbilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_CardsAbilities_1_0" Association="Self.FK_Cards_CardsAbilities_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Cards_CardsAbilities" EntitySet="Cards_CardsAbilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsHasFeatures_0_0" Association="Self.FK_CardsHasFeatures_0_0">
+            <End Role="Features" EntitySet="Features" />
+            <End Role="CardsHasFeatures" EntitySet="CardsHasFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsHasFeatures_1_0" Association="Self.FK_CardsHasFeatures_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="CardsHasFeatures" EntitySet="CardsHasFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsToSell_0_0" Association="Self.FK_CardsToSell_0_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="CardsToSell" EntitySet="CardsToSell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeckHasCards_0_0" Association="Self.FK_DeckHasCards_0_0">
+            <End Role="Decks" EntitySet="Decks" />
+            <End Role="DeckHasCards" EntitySet="DeckHasCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeckHasCards_1_0" Association="Self.FK_DeckHasCards_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="DeckHasCards" EntitySet="DeckHasCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavouriteCards_0_0" Association="Self.FK_FavouriteCards_0_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="FavouriteCards" EntitySet="FavouriteCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavouriteDecks_0_0" Association="Self.FK_FavouriteDecks_0_0">
+            <End Role="Decks" EntitySet="Decks" />
+            <End Role="FavouriteDecks" EntitySet="FavouriteDecks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManaCost_0_0" Association="Self.FK_ManaCost_0_0">
+            <End Role="CardAbilities" EntitySet="CardAbilities" />
+            <End Role="ManaCost" EntitySet="ManaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManaCost_1_0" Association="Self.FK_ManaCost_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="ManaCost" EntitySet="ManaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManaCost_2_0" Association="Self.FK_ManaCost_2_0">
+            <End Role="ManaType" EntitySet="ManaType" />
+            <End Role="ManaCost" EntitySet="ManaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProvidedMana_0_0" Association="Self.FK_ProvidedMana_0_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="ProvidedMana" EntitySet="ProvidedMana" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProvidedMana_1_0" Association="Self.FK_ProvidedMana_1_0">
+            <End Role="ManaType" EntitySet="ManaType" />
+            <End Role="ProvidedMana" EntitySet="ProvidedMana" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MagicModelContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AbilityTypes">
+          <Key>
+            <PropertyRef Name="AbilityTypeID" />
+          </Key>
+          <Property Name="AbilityTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GeneralDescription" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CardAbilities" Relationship="Self.FK_CardAbilities_0_0" FromRole="AbilityTypes" ToRole="CardAbilities" />
+        </EntityType>
+        <EntityType Name="CardAbilities">
+          <Key>
+            <PropertyRef Name="CardAbilitiesID" />
+          </Key>
+          <Property Name="CardAbilitiesID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="IsPassive" Type="Boolean" Nullable="false" />
+          <Property Name="Cost" Type="Int64" />
+          <Property Name="AdditionalCondition" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="AbilityType" Type="Int64" />
+          <NavigationProperty Name="AbilityTypes" Relationship="Self.FK_CardAbilities_0_0" FromRole="CardAbilities" ToRole="AbilityTypes" />
+          <NavigationProperty Name="Cards_CardsAbilities" Relationship="Self.FK_Cards_CardsAbilities_0_0" FromRole="CardAbilities" ToRole="Cards_CardsAbilities" />
+          <NavigationProperty Name="ManaCost" Relationship="Self.FK_ManaCost_0_0" FromRole="CardAbilities" ToRole="ManaCost" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="Int64" Nullable="false" />
+          <Property Name="Version" Type="Int64" Nullable="false" />
+          <Property Name="ColorAssignment" Type="Int64" Nullable="false" />
+          <Property Name="Hyperlink" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="TotalManaCost" Type="Int64" Nullable="false" />
+          <Property Name="AttackPower" Type="Int64" />
+          <Property Name="Health" Type="Int64" />
+          <Property Name="SecondSideCardID" Type="Int64" />
+          <Property Name="FableDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Footer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rarity" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReleaseYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderNumberInExpansion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WantToBuy" Type="Boolean" />
+          <Property Name="SubTypeID" Type="Int64" />
+          <NavigationProperty Name="SubTypes" Relationship="Self.FK_Cards_0_0" FromRole="Cards" ToRole="SubTypes" />
+          <NavigationProperty Name="Cards1" Relationship="Self.FK_Cards_1_0" FromRole="Cards" ToRole="Cards1" />
+          <NavigationProperty Name="Cards2" Relationship="Self.FK_Cards_1_0" FromRole="Cards1" ToRole="Cards" />
+          <NavigationProperty Name="ManaType" Relationship="Self.FK_Cards_2_0" FromRole="Cards" ToRole="ManaType" />
+          <NavigationProperty Name="Versions" Relationship="Self.FK_Cards_3_0" FromRole="Cards" ToRole="Versions" />
+          <NavigationProperty Name="CardTypes" Relationship="Self.FK_Cards_4_0" FromRole="Cards" ToRole="CardTypes" />
+          <NavigationProperty Name="Cards_CardsAbilities" Relationship="Self.FK_Cards_CardsAbilities_1_0" FromRole="Cards" ToRole="Cards_CardsAbilities" />
+          <NavigationProperty Name="CardsHasFeatures" Relationship="Self.FK_CardsHasFeatures_1_0" FromRole="Cards" ToRole="CardsHasFeatures" />
+          <NavigationProperty Name="CardsToSell" Relationship="Self.FK_CardsToSell_0_0" FromRole="Cards" ToRole="CardsToSell" />
+          <NavigationProperty Name="DeckHasCards" Relationship="Self.FK_DeckHasCards_1_0" FromRole="Cards" ToRole="DeckHasCards" />
+          <NavigationProperty Name="FavouriteCards" Relationship="Self.FK_FavouriteCards_0_0" FromRole="Cards" ToRole="FavouriteCards" />
+          <NavigationProperty Name="ManaCost" Relationship="Self.FK_ManaCost_1_0" FromRole="Cards" ToRole="ManaCost" />
+          <NavigationProperty Name="ProvidedMana" Relationship="Self.FK_ProvidedMana_0_0" FromRole="Cards" ToRole="ProvidedMana" />
+        </EntityType>
+        <EntityType Name="Cards_CardsAbilities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardID" Type="Int64" Nullable="false" />
+          <Property Name="AbilityID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="CardAbilities" Relationship="Self.FK_Cards_CardsAbilities_0_0" FromRole="Cards_CardsAbilities" ToRole="CardAbilities" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Cards_CardsAbilities_1_0" FromRole="Cards_CardsAbilities" ToRole="Cards" />
+        </EntityType>
+        <EntityType Name="CardsHasFeatures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardID" Type="Int64" Nullable="false" />
+          <Property Name="FeatueID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_CardsHasFeatures_1_0" FromRole="CardsHasFeatures" ToRole="Cards" />
+          <NavigationProperty Name="Features" Relationship="Self.FK_CardsHasFeatures_0_0" FromRole="CardsHasFeatures" ToRole="Features" />
+        </EntityType>
+        <EntityType Name="CardsToSell">
+          <Key>
+            <PropertyRef Name="CardsToSellID" />
+          </Key>
+          <Property Name="CardsToSellID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardID" Type="Int64" Nullable="false" />
+          <Property Name="NumberToSell" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_CardsToSell_0_0" FromRole="CardsToSell" ToRole="Cards" />
+        </EntityType>
+        <EntityType Name="CardTypes">
+          <Key>
+            <PropertyRef Name="CardTypeID" />
+          </Key>
+          <Property Name="CardTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Cards_4_0" FromRole="CardTypes" ToRole="Cards" />
+        </EntityType>
+        <EntityType Name="DeckHasCards">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardID" Type="Int64" Nullable="false" />
+          <Property Name="DeckID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_DeckHasCards_1_0" FromRole="DeckHasCards" ToRole="Cards" />
+          <NavigationProperty Name="Decks" Relationship="Self.FK_DeckHasCards_0_0" FromRole="DeckHasCards" ToRole="Decks" />
+        </EntityType>
+        <EntityType Name="Decks">
+          <Key>
+            <PropertyRef Name="DeckID" />
+          </Key>
+          <Property Name="DeckID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="DeckHasCards" Relationship="Self.FK_DeckHasCards_0_0" FromRole="Decks" ToRole="DeckHasCards" />
+          <NavigationProperty Name="FavouriteDecks" Relationship="Self.FK_FavouriteDecks_0_0" FromRole="Decks" ToRole="FavouriteDecks" />
+        </EntityType>
+        <EntityType Name="FavouriteCards">
+          <Key>
+            <PropertyRef Name="FavouriteCardID" />
+          </Key>
+          <Property Name="FavouriteCardID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardID" Type="Int64" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_FavouriteCards_0_0" FromRole="FavouriteCards" ToRole="Cards" />
+        </EntityType>
+        <EntityType Name="FavouriteDecks">
+          <Key>
+            <PropertyRef Name="FavouriteDeckID" />
+          </Key>
+          <Property Name="FavouriteDeckID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeckID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Decks" Relationship="Self.FK_FavouriteDecks_0_0" FromRole="FavouriteDecks" ToRole="Decks" />
+        </EntityType>
+        <EntityType Name="Features">
+          <Key>
+            <PropertyRef Name="FeatureID" />
+          </Key>
+          <Property Name="FeatureID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CardsHasFeatures" Relationship="Self.FK_CardsHasFeatures_0_0" FromRole="Features" ToRole="CardsHasFeatures" />
+        </EntityType>
+        <EntityType Name="HelpContent">
+          <Key>
+            <PropertyRef Name="HelpContentID" />
+          </Key>
+          <Property Name="HelpContentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManaCost">
+          <Key>
+            <PropertyRef Name="ManaCostID" />
+          </Key>
+          <Property Name="ManaCostID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="ManaID" Type="Int64" Nullable="false" />
+          <Property Name="CardID" Type="Int64" />
+          <Property Name="AbilityID" Type="Int64" />
+          <NavigationProperty Name="CardAbilities" Relationship="Self.FK_ManaCost_0_0" FromRole="ManaCost" ToRole="CardAbilities" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_ManaCost_1_0" FromRole="ManaCost" ToRole="Cards" />
+          <NavigationProperty Name="ManaType" Relationship="Self.FK_ManaCost_2_0" FromRole="ManaCost" ToRole="ManaType" />
+        </EntityType>
+        <EntityType Name="ManaType">
+          <Key>
+            <PropertyRef Name="ManaID" />
+          </Key>
+          <Property Name="ManaID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Symbol" Type="Binary" MaxLength="2147483647" FixedLength="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Cards_2_0" FromRole="ManaType" ToRole="Cards" />
+          <NavigationProperty Name="ManaCost" Relationship="Self.FK_ManaCost_2_0" FromRole="ManaType" ToRole="ManaCost" />
+          <NavigationProperty Name="ProvidedMana" Relationship="Self.FK_ProvidedMana_1_0" FromRole="ManaType" ToRole="ProvidedMana" />
+        </EntityType>
+        <EntityType Name="ProvidedMana">
+          <Key>
+            <PropertyRef Name="ProvidedManaID" />
+          </Key>
+          <Property Name="ProvidedManaID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Int64" Nullable="false" />
+          <Property Name="AdditionalNotes" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ManaID" Type="Int64" Nullable="false" />
+          <Property Name="CardID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_ProvidedMana_0_0" FromRole="ProvidedMana" ToRole="Cards" />
+          <NavigationProperty Name="ManaType" Relationship="Self.FK_ProvidedMana_1_0" FromRole="ProvidedMana" ToRole="ManaType" />
+        </EntityType>
+        <EntityType Name="Rules">
+          <Key>
+            <PropertyRef Name="RuleID" />
+          </Key>
+          <Property Name="RuleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hyperlink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubTypes">
+          <Key>
+            <PropertyRef Name="SubTypeID" />
+          </Key>
+          <Property Name="SubTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Cards_0_0" FromRole="SubTypes" ToRole="Cards" />
+        </EntityType>
+        <EntityType Name="Versions">
+          <Key>
+            <PropertyRef Name="VersionID" />
+          </Key>
+          <Property Name="VersionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Symbol" Type="Binary" MaxLength="2147483647" FixedLength="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Cards_3_0" FromRole="Versions" ToRole="Cards" />
+        </EntityType>
+        <Association Name="FK_CardAbilities_0_0">
+          <End Role="AbilityTypes" Type="Self.AbilityTypes" Multiplicity="0..1" />
+          <End Role="CardAbilities" Type="Self.CardAbilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbilityTypes">
+              <PropertyRef Name="AbilityTypeID" />
+            </Principal>
+            <Dependent Role="CardAbilities">
+              <PropertyRef Name="AbilityType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_CardsAbilities_0_0">
+          <End Role="CardAbilities" Type="Self.CardAbilities" Multiplicity="1" />
+          <End Role="Cards_CardsAbilities" Type="Self.Cards_CardsAbilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardAbilities">
+              <PropertyRef Name="CardAbilitiesID" />
+            </Principal>
+            <Dependent Role="Cards_CardsAbilities">
+              <PropertyRef Name="AbilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManaCost_0_0">
+          <End Role="CardAbilities" Type="Self.CardAbilities" Multiplicity="0..1" />
+          <End Role="ManaCost" Type="Self.ManaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardAbilities">
+              <PropertyRef Name="CardAbilitiesID" />
+            </Principal>
+            <Dependent Role="ManaCost">
+              <PropertyRef Name="AbilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_0_0">
+          <End Role="SubTypes" Type="Self.SubTypes" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTypes">
+              <PropertyRef Name="SubTypeID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="SubTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
+          <End Role="Cards1" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="Cards1">
+              <PropertyRef Name="SecondSideCardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_2_0">
+          <End Role="ManaType" Type="Self.ManaType" Multiplicity="1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManaType">
+              <PropertyRef Name="ManaID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="ColorAssignment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_3_0">
+          <End Role="Versions" Type="Self.Versions" Multiplicity="1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Versions">
+              <PropertyRef Name="VersionID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="Version" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_4_0">
+          <End Role="CardTypes" Type="Self.CardTypes" Multiplicity="1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardTypes">
+              <PropertyRef Name="CardTypeID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards_CardsAbilities_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="Cards_CardsAbilities" Type="Self.Cards_CardsAbilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="Cards_CardsAbilities">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardsHasFeatures_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="CardsHasFeatures" Type="Self.CardsHasFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="CardsHasFeatures">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardsToSell_0_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="CardsToSell" Type="Self.CardsToSell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="CardsToSell">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeckHasCards_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="DeckHasCards" Type="Self.DeckHasCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="DeckHasCards">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavouriteCards_0_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
+          <End Role="FavouriteCards" Type="Self.FavouriteCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="FavouriteCards">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManaCost_1_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
+          <End Role="ManaCost" Type="Self.ManaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="ManaCost">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProvidedMana_0_0">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="ProvidedMana" Type="Self.ProvidedMana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="ProvidedMana">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardsHasFeatures_0_0">
+          <End Role="Features" Type="Self.Features" Multiplicity="1" />
+          <End Role="CardsHasFeatures" Type="Self.CardsHasFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Features">
+              <PropertyRef Name="FeatureID" />
+            </Principal>
+            <Dependent Role="CardsHasFeatures">
+              <PropertyRef Name="FeatueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeckHasCards_0_0">
+          <End Role="Decks" Type="Self.Decks" Multiplicity="1" />
+          <End Role="DeckHasCards" Type="Self.DeckHasCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Decks">
+              <PropertyRef Name="DeckID" />
+            </Principal>
+            <Dependent Role="DeckHasCards">
+              <PropertyRef Name="DeckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavouriteDecks_0_0">
+          <End Role="Decks" Type="Self.Decks" Multiplicity="1" />
+          <End Role="FavouriteDecks" Type="Self.FavouriteDecks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Decks">
+              <PropertyRef Name="DeckID" />
+            </Principal>
+            <Dependent Role="FavouriteDecks">
+              <PropertyRef Name="DeckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManaCost_2_0">
+          <End Role="ManaType" Type="Self.ManaType" Multiplicity="1" />
+          <End Role="ManaCost" Type="Self.ManaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManaType">
+              <PropertyRef Name="ManaID" />
+            </Principal>
+            <Dependent Role="ManaCost">
+              <PropertyRef Name="ManaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProvidedMana_1_0">
+          <End Role="ManaType" Type="Self.ManaType" Multiplicity="1" />
+          <End Role="ProvidedMana" Type="Self.ProvidedMana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManaType">
+              <PropertyRef Name="ManaID" />
+            </Principal>
+            <Dependent Role="ProvidedMana">
+              <PropertyRef Name="ManaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SQLiteDatabase_MagicConnectionString" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AbilityTypes" EntityType="Self.AbilityTypes" />
+          <EntitySet Name="CardAbilities" EntityType="Self.CardAbilities" />
+          <EntitySet Name="Cards" EntityType="Self.Cards" />
+          <EntitySet Name="Cards_CardsAbilities" EntityType="Self.Cards_CardsAbilities" />
+          <EntitySet Name="CardsHasFeatures" EntityType="Self.CardsHasFeatures" />
+          <EntitySet Name="CardsToSell" EntityType="Self.CardsToSell" />
+          <EntitySet Name="CardTypes" EntityType="Self.CardTypes" />
+          <EntitySet Name="DeckHasCards" EntityType="Self.DeckHasCards" />
+          <EntitySet Name="Decks" EntityType="Self.Decks" />
+          <EntitySet Name="FavouriteCards" EntityType="Self.FavouriteCards" />
+          <EntitySet Name="FavouriteDecks" EntityType="Self.FavouriteDecks" />
+          <EntitySet Name="Features" EntityType="Self.Features" />
+          <EntitySet Name="HelpContent" EntityType="Self.HelpContent" />
+          <EntitySet Name="ManaCost" EntityType="Self.ManaCost" />
+          <EntitySet Name="ManaType" EntityType="Self.ManaType" />
+          <EntitySet Name="ProvidedMana" EntityType="Self.ProvidedMana" />
+          <EntitySet Name="Rules" EntityType="Self.Rules" />
+          <EntitySet Name="SubTypes" EntityType="Self.SubTypes" />
+          <EntitySet Name="Versions" EntityType="Self.Versions" />
+          <AssociationSet Name="FK_CardAbilities_0_0" Association="Self.FK_CardAbilities_0_0">
+            <End Role="AbilityTypes" EntitySet="AbilityTypes" />
+            <End Role="CardAbilities" EntitySet="CardAbilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_CardsAbilities_0_0" Association="Self.FK_Cards_CardsAbilities_0_0">
+            <End Role="CardAbilities" EntitySet="CardAbilities" />
+            <End Role="Cards_CardsAbilities" EntitySet="Cards_CardsAbilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManaCost_0_0" Association="Self.FK_ManaCost_0_0">
+            <End Role="CardAbilities" EntitySet="CardAbilities" />
+            <End Role="ManaCost" EntitySet="ManaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_0_0" Association="Self.FK_Cards_0_0">
+            <End Role="SubTypes" EntitySet="SubTypes" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_1_0" Association="Self.FK_Cards_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Cards1" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_2_0" Association="Self.FK_Cards_2_0">
+            <End Role="ManaType" EntitySet="ManaType" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_3_0" Association="Self.FK_Cards_3_0">
+            <End Role="Versions" EntitySet="Versions" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_4_0" Association="Self.FK_Cards_4_0">
+            <End Role="CardTypes" EntitySet="CardTypes" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards_CardsAbilities_1_0" Association="Self.FK_Cards_CardsAbilities_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Cards_CardsAbilities" EntitySet="Cards_CardsAbilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsHasFeatures_1_0" Association="Self.FK_CardsHasFeatures_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="CardsHasFeatures" EntitySet="CardsHasFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsToSell_0_0" Association="Self.FK_CardsToSell_0_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="CardsToSell" EntitySet="CardsToSell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeckHasCards_1_0" Association="Self.FK_DeckHasCards_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="DeckHasCards" EntitySet="DeckHasCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavouriteCards_0_0" Association="Self.FK_FavouriteCards_0_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="FavouriteCards" EntitySet="FavouriteCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManaCost_1_0" Association="Self.FK_ManaCost_1_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="ManaCost" EntitySet="ManaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProvidedMana_0_0" Association="Self.FK_ProvidedMana_0_0">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="ProvidedMana" EntitySet="ProvidedMana" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsHasFeatures_0_0" Association="Self.FK_CardsHasFeatures_0_0">
+            <End Role="Features" EntitySet="Features" />
+            <End Role="CardsHasFeatures" EntitySet="CardsHasFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeckHasCards_0_0" Association="Self.FK_DeckHasCards_0_0">
+            <End Role="Decks" EntitySet="Decks" />
+            <End Role="DeckHasCards" EntitySet="DeckHasCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavouriteDecks_0_0" Association="Self.FK_FavouriteDecks_0_0">
+            <End Role="Decks" EntitySet="Decks" />
+            <End Role="FavouriteDecks" EntitySet="FavouriteDecks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManaCost_2_0" Association="Self.FK_ManaCost_2_0">
+            <End Role="ManaType" EntitySet="ManaType" />
+            <End Role="ManaCost" EntitySet="ManaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProvidedMana_1_0" Association="Self.FK_ProvidedMana_1_0">
+            <End Role="ManaType" EntitySet="ManaType" />
+            <End Role="ProvidedMana" EntitySet="ProvidedMana" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MagicModelContextStoreContainer" CdmEntityContainer="SQLiteDatabase_MagicConnectionString">
+          <EntitySetMapping Name="AbilityTypes">
+            <EntityTypeMapping TypeName="MagicModelContext.AbilityTypes">
+              <MappingFragment StoreEntitySet="AbilityTypes">
+                <ScalarProperty Name="AbilityTypeID" ColumnName="AbilityTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GeneralDescription" ColumnName="GeneralDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardAbilities">
+            <EntityTypeMapping TypeName="MagicModelContext.CardAbilities">
+              <MappingFragment StoreEntitySet="CardAbilities">
+                <ScalarProperty Name="CardAbilitiesID" ColumnName="CardAbilitiesID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="AdditionalCondition" ColumnName="AdditionalCondition" />
+                <ScalarProperty Name="AbilityType" ColumnName="AbilityType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="MagicModelContext.Cards">
+              <MappingFragment StoreEntitySet="Cards">
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="ColorAssignment" ColumnName="ColorAssignment" />
+                <ScalarProperty Name="Hyperlink" ColumnName="Hyperlink" />
+                <ScalarProperty Name="TotalManaCost" ColumnName="TotalManaCost" />
+                <ScalarProperty Name="AttackPower" ColumnName="AttackPower" />
+                <ScalarProperty Name="Health" ColumnName="Health" />
+                <ScalarProperty Name="SecondSideCardID" ColumnName="SecondSideCardID" />
+                <ScalarProperty Name="FableDescription" ColumnName="FableDescription" />
+                <ScalarProperty Name="Footer" ColumnName="Footer" />
+                <ScalarProperty Name="Rarity" ColumnName="Rarity" />
+                <ScalarProperty Name="ReleaseYear" ColumnName="ReleaseYear" />
+                <ScalarProperty Name="OrderNumberInExpansion" ColumnName="OrderNumberInExpansion" />
+                <ScalarProperty Name="WantToBuy" ColumnName="WantToBuy" />
+                <ScalarProperty Name="SubTypeID" ColumnName="SubTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards_CardsAbilities">
+            <EntityTypeMapping TypeName="MagicModelContext.Cards_CardsAbilities">
+              <MappingFragment StoreEntitySet="Cards_CardsAbilities">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="AbilityID" ColumnName="AbilityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardsHasFeatures">
+            <EntityTypeMapping TypeName="MagicModelContext.CardsHasFeatures">
+              <MappingFragment StoreEntitySet="CardsHasFeatures">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="FeatueID" ColumnName="FeatueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardsToSell">
+            <EntityTypeMapping TypeName="MagicModelContext.CardsToSell">
+              <MappingFragment StoreEntitySet="CardsToSell">
+                <ScalarProperty Name="CardsToSellID" ColumnName="CardsToSellID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="NumberToSell" ColumnName="NumberToSell" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardTypes">
+            <EntityTypeMapping TypeName="MagicModelContext.CardTypes">
+              <MappingFragment StoreEntitySet="CardTypes">
+                <ScalarProperty Name="CardTypeID" ColumnName="CardTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeckHasCards">
+            <EntityTypeMapping TypeName="MagicModelContext.DeckHasCards">
+              <MappingFragment StoreEntitySet="DeckHasCards">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="DeckID" ColumnName="DeckID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Decks">
+            <EntityTypeMapping TypeName="MagicModelContext.Decks">
+              <MappingFragment StoreEntitySet="Decks">
+                <ScalarProperty Name="DeckID" ColumnName="DeckID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavouriteCards">
+            <EntityTypeMapping TypeName="MagicModelContext.FavouriteCards">
+              <MappingFragment StoreEntitySet="FavouriteCards">
+                <ScalarProperty Name="FavouriteCardID" ColumnName="FavouriteCardID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavouriteDecks">
+            <EntityTypeMapping TypeName="MagicModelContext.FavouriteDecks">
+              <MappingFragment StoreEntitySet="FavouriteDecks">
+                <ScalarProperty Name="FavouriteDeckID" ColumnName="FavouriteDeckID" />
+                <ScalarProperty Name="DeckID" ColumnName="DeckID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Features">
+            <EntityTypeMapping TypeName="MagicModelContext.Features">
+              <MappingFragment StoreEntitySet="Features">
+                <ScalarProperty Name="FeatureID" ColumnName="FeatureID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HelpContent">
+            <EntityTypeMapping TypeName="MagicModelContext.HelpContent">
+              <MappingFragment StoreEntitySet="HelpContent">
+                <ScalarProperty Name="HelpContentID" ColumnName="HelpContentID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManaCost">
+            <EntityTypeMapping TypeName="MagicModelContext.ManaCost">
+              <MappingFragment StoreEntitySet="ManaCost">
+                <ScalarProperty Name="ManaCostID" ColumnName="ManaCostID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ManaID" ColumnName="ManaID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="AbilityID" ColumnName="AbilityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManaType">
+            <EntityTypeMapping TypeName="MagicModelContext.ManaType">
+              <MappingFragment StoreEntitySet="ManaType">
+                <ScalarProperty Name="ManaID" ColumnName="ManaID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProvidedMana">
+            <EntityTypeMapping TypeName="MagicModelContext.ProvidedMana">
+              <MappingFragment StoreEntitySet="ProvidedMana">
+                <ScalarProperty Name="ProvidedManaID" ColumnName="ProvidedManaID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AdditionalNotes" ColumnName="AdditionalNotes" />
+                <ScalarProperty Name="ManaID" ColumnName="ManaID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rules">
+            <EntityTypeMapping TypeName="MagicModelContext.Rules">
+              <MappingFragment StoreEntitySet="Rules">
+                <ScalarProperty Name="RuleID" ColumnName="RuleID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Hyperlink" ColumnName="Hyperlink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubTypes">
+            <EntityTypeMapping TypeName="MagicModelContext.SubTypes">
+              <MappingFragment StoreEntitySet="SubTypes">
+                <ScalarProperty Name="SubTypeID" ColumnName="SubTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Versions">
+            <EntityTypeMapping TypeName="MagicModelContext.Versions">
+              <MappingFragment StoreEntitySet="Versions">
+                <ScalarProperty Name="VersionID" ColumnName="VersionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

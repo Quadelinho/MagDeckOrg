@@ -1,0 +1,7 @@
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\DesktopView\bin\Debug\DesktopView.exe
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\DesktopView\bin\Debug\DesktopView.pdb
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\DesktopView\obj\Debug\DesktopView.csprojResolveAssemblyReference.cache
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\DesktopView\obj\Debug\DesktopView.Properties.Resources.resources
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\DesktopView\obj\Debug\DesktopView.csproj.GenerateResource.Cache
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\DesktopView\obj\Debug\DesktopView.exe
+E:\Projekty\GIT repo\MagDeck\MagicDeckOrganiser\DesktopView\obj\Debug\DesktopView.pdb
